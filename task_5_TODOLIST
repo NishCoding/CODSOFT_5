@@ -1,0 +1,96 @@
+
+import json
+
+# Function to load tasks from a JSON file
+def opentasks():
+    try:
+        with open("t.json", "r") as file:
+            t = json.load(file)
+    except FileNotFoundError:
+        t = []
+    return t
+
+# Function to save tasks to a JSON file
+def savetasks(t):
+    with open("t.json", "w") as file:
+        json.dump(t, file)
+
+# Function to add a task
+def addtask(t):
+    name = input("Enter name of task: ")
+    description = input("Describe your task!: ")
+    new_task = {
+        "name": name,
+        "description": description,
+        "status": "Not Completed"
+    }
+    t.append(new_task)
+    savetasks(t)
+    print("\n DUBS DUBS !! Task added successfully!")
+
+# Function to list all tasks
+def mentiontasks(t):
+    if not t:
+        print("Tasks not found! Please add your tasks..")
+    else:
+        for idx, t in enumerate(t, start=1):
+            print(f"{idx}. {t['name']} - {t['description']} - Status: {t['status']}")
+
+# Function to mark a task as completed
+def completed(t):
+    mentiontasks(t)
+    try:
+        index = int(input("Enter the number of the task to be completed")) - 1
+        if 0 <= index < len(t):
+            t[index]["status"] = "Completed"
+            savetasks(t)
+            print("The task has been completed")
+        else:
+            print("Invalid task number!!!")
+    except ValueError:
+        print("Invalid input. Please enter a valid task number.")
+
+# Function to remove a task
+def deletetask(t):
+    mentiontasks(t)
+    try:
+        index = int(input("Enter the task number to remove: ")) - 1
+        if 0 <= index < len(t):
+            del_task = t.pop(index)
+            savetasks(t)
+            print(f"Task '{del_task['name']}' has been deleted successfully.")
+        else:
+            print("Invalid task number!!!")
+    except ValueError:
+        print("Invalid input. Please enter a valid task number.")
+
+# Main function
+def main():
+    t = opentasks()
+    n = input("HELLO THERE CUH :D ! Enter your name real quick for me, ya?")
+    while True:
+        print("LESGOO",n,"\n HERE IS A TO-DO-LIST CREATED EXCLUSIVELY FOR YOUR USE ! \n HAVE FUN!")
+        print("Press 1 to add a task")
+        print("Press 2 to see your tasks")
+        print("Press 3 to mark a given task as completed")
+        print("Press 4 to remove a task")
+        print("Press 5 to quit!")
+        
+        choice = input("Enter your choice")
+        
+        if choice == "1":
+            addtask(t)
+        elif choice == "2":
+            mentiontasks(t)
+        elif choice == "3":
+            completed(t)
+        elif choice == "4":
+            deletetask(t)
+        elif choice == "5":
+            print("WAS A PLEASURE SERVING YOU, WE'LL MEET AGAIN!")
+            break
+        else:
+            print("Invalid choice. Please try again!")
+
+if __name__ == "__main__":
+    main()

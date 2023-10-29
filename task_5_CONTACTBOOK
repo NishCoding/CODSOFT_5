@@ -1,0 +1,77 @@
+
+print("WELCOME TO YOUR VERY OWN CONTACT BOOK!")
+print(" ( THE NAME IS LINKED WITH THE PHONE NUMBER AND THE MAIL IS LINKED WITH THE ADDRESS ! )")
+
+contact_n={}
+contact_a={}
+
+def display_c():
+    print("Name\t\tContact Number")
+    for k in contact_n:
+        print("{}\t\t{}".format(k,contact_n.get(k)))
+    print("Gmail\t\tAddress")
+    for k2 in contact_a:
+        print("{}\t\t{}".format(k2,contact_a.get(k2)))
+def main():
+  while True:
+    choice = int(input("ENTER YOUR CHOICE! \n 1. Add new contact \n 2.Display contact \n 3. Search contact \n 4. Update contact \n 5. Delete contact \n 6. Exit"))
+    if choice == 1:
+        na = input("Enter the name of your contact:")
+        p=int(input("Enter the phone number of your contact:"))
+        contact_n[na]=p
+        add=input("Enter the short address of your contact:")
+        gmail=input("Enter the gmail address of your contact:")
+        contact_a[gmail]=add
+    elif choice == 3:
+        search_n = input("Enter the contact name ( for the mobile number )")
+        if search_n in contact_n:
+            print("The contact number of",search_n,"is",contact_n[search_n])
+        search_g = input("Enter the gmail ( for the address )")
+        if search_g in contact_a:
+            print("The address of",search_n,"is",contact_a[search_g])
+
+        else:
+            print("Name is not found in contact book")
+    elif choice == 2:
+        if not contact_n or not contact_a:
+            print("EMPTY CONTACT BOOK! NO RECORDS FOUND!...")
+        else:
+            display_c()
+    elif choice == 4:
+        upd_contact = input("Enter the name of your contact to be updated")
+        if upd_contact in contact_n:
+            phone = int(input("Enter the new mobile number!"))
+            contact_n[upd_contact] = phone
+        upd_mail = input("Enter the mail of your contact to be updated")
+        if upd_mail in contact_a:
+            newadd=input("Enter the new address!")
+            contact_a[upd_mail] = newadd
+            print("YOUR CONTACT HAS BEEN UPDATED!!")
+            
+            display_c()
+        else:
+            print("Name not found in our records!")
+    elif choice == 5:
+        del_c = input("Enter the name of your contact to be deleted")
+        if del_c in contact_n:
+            conf = input("Are you sure about PERMANENTLY deleting the contact's contact number? (y/n)".format(del_c))
+            if conf == 'y' or conf == 'Y':
+                contact_n.pop(del_c)
+        del_g = input("Enter the gmail of your contact to be deleted")
+        if del_g in contact_a:
+            conf = input("Are you sure about PERMANENTLY deleting the contact's address details? (y/n)".format(del_g))
+            if conf == 'y' or conf == 'Y':
+                contact_a.pop(del_g)
+            display_c()
+        else:
+            print("Contact not found in our records!")
+    elif choice == 6:
+        print("WAS A PLEASURE SERVING YOU , HOPE TO SEE YOU SOON!")
+        exit()
+    else:
+        err=input("INCORRECT INPUT ! \n Please type in the right choice ! (1-6) \n PRESS ENTER TO CONTINUE")
+        main()
+
+        
+  
+main()

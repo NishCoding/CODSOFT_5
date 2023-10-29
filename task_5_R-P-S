@@ -1,0 +1,53 @@
+
+import random
+
+ 
+
+options = ["R", "P", "S"]
+
+ 
+print("WELCOME TO YOUR VERY OWN ROCK-PAPER-SCISSORS PROGRAM!!!")
+def main():
+        while True:
+                
+           user_choice = input("Type R for Rock,P for Paper,S for Scissors: ")
+
+           computer_choice = random.choice(options)
+
+ 
+
+           print("You chose: ", user_choice)
+
+           print("Computer chose: ", computer_choice)
+
+ 
+
+           if user_choice == computer_choice:
+
+              print("It's a tie!")
+
+           elif user_choice == "R" and computer_choice == "S":
+
+              print("You win!")
+
+           elif user_choice == "P" and computer_choice == "R":
+
+              print("You win!")
+
+           elif user_choice == "S" and computer_choice == "P":
+
+              print("You win!")
+
+           else:
+  
+              print("Computer wins!")
+           
+           q=input("Do you want to continue? (y/n)")
+           while True:
+               if q == 'y':
+                 main()
+               elif q == 'n':
+                 print("THANK YOU FOR PLAYING!")
+                 exit()
+                 
+main()

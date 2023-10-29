@@ -1,0 +1,51 @@
+import math
+def addition(n1,n2):
+    s=n1+n2
+    print("THE SUM IS :", s)
+
+def subtraction(n1,n2):
+    sub=n1-n2
+    print("THE DIFFERENCE IS :",sub)
+
+def product(n1,n2):
+    p=n1*n2
+    print("THE PRODUCT IS :",p)
+
+def division(n1,n2):
+    d=n1/n2
+    print("THE QUOTIENT IS :",d)
+    
+#Main Function
+def main():
+    n=input("Please enter your Name!")
+    int c 
+    if c == '5':
+        print("SEE YOU AGAIN! :D")
+        exit()
+    while True:
+       print("\nWELCOME TO YOUR PERSONALISED CALCULATOR PROGRAM",n,"\n PLEASE CHOOSE AMONG THE FOLLOWING OPERATIONS")
+       print("TO PERFORM ADDITION, enter 1")
+       print("TO PERFORM SUBTRACTION, enter 2")
+       print("TO PERFORM MULTIPLICATION, enter 3")
+       print("TO PERFORM DIVISION, enter 4")
+       print("TO EXIT FROM THE PROGRAM, enter 5")
+       c=input("Enter your choice")
+       n1=int(input("Enter your first number:"))
+       n2=int(input("Enter your second number:"))
+       if c == '1':
+          addition(n1,n2)
+       elif c == '2':
+          subtraction(n1,n2)
+       elif c == '3':
+          product(n1,n2)
+       elif c == '4':
+          division(n1,n2)
+       elif c == '5': 
+          print("SEE YOU AGAIN :D !")
+          
+       else:
+          print("OOPS... INVALID INPUT !!! \n PLEASE ENTER THE CORRECT CHOICE")
+
+if __name__ ==  "__main__":
+    main()
+        
